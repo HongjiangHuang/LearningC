@@ -8,4 +8,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 COPY ./ /opt/php
 
-CMD cd /opt/php && composer run test
+CMD cd /opt/php && composer install && composer run test

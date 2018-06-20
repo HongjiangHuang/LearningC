@@ -6,4 +6,3 @@ jobs:
     - stage: test
       script:
         - make b-lang-docker CURRENT_LANG=php
-        - docker run --rm hongjianghuang/php:latest

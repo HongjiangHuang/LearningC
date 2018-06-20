@@ -1,9 +1,6 @@
 sudo: true
 dist: trusty
 
-env:
- - DockerHubAccount='' DockerHubPassword=''
-
 jobs:
   include:
     - stage: build php docker

@@ -5,4 +5,4 @@ jobs:
   include:
     - stage: test
       script:
-        - make b-lang-docker CURRENT_LANG=php
+        - make b-lang-docker CURRENT_LANG=php && docker run --rm huanghongjiang/php:latest

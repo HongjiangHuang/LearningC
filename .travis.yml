@@ -7,5 +7,4 @@ jobs:
       script:
         - make b-lang-docker CURRENT_LANG=php
     - stage: test
-      script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
-    - script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
+      script: docker run --rm hongjianghuang/php:latest cat composer.json

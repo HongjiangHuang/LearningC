@@ -5,3 +5,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && mv ./composer.phar /usr/local/bin/composer
+
+COPY ./ /opt/php
+
+CMD cd /opt/php && composer run test

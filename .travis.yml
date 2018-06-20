@@ -7,7 +7,7 @@ jobs:
       script:
         - echo "$DockerHubPassword" | docker login -u "$DockerHubAccount" --password-stdin
         - make b-lang-docker CURRENT_LANG=php
-        - docker push huanghongjiang/php:latest
+        - docker push hongjianghuang/php:latest
     - stage: run php test
       script:
-        - docker run --rm huanghongjiang/php:latest
+        - docker run --rm hongjianghuang/php:latest

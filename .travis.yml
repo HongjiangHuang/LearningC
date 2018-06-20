@@ -8,6 +8,6 @@ jobs:
         - echo "$DockerHubAccount" | docker login -u "$DockerHubPassword" --password-stdin
         - make b-lang-docker CURRENT_LANG=php
         - docker push huanghongjiang/php:latest
-    - stage:
+    - stage: run php test
       script:
         - docker run --rm huanghongjiang/php:latest

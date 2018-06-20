@@ -8,7 +8,7 @@ jobs:
   include:
     - stage: build php docker
       script:
-        - echo "$DockerHubAccount" | docker login -u "$DockerHubPassword" --password-stdin
+        - echo "$DockerHubPassword" | docker login -u "$DockerHubAccount" --password-stdin
         - make b-lang-docker CURRENT_LANG=php
         - docker push huanghongjiang/php:latest
     - stage: run php test

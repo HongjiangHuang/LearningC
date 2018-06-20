@@ -1,0 +1,11 @@
+sudo: true
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker
+      script:
+        - make b-lang-docker CURRENT_LANG=php
+    - stage: test
+      script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
+    - script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt

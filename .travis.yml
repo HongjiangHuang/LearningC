@@ -3,6 +3,11 @@ dist: trusty
 
 jobs:
   include:
-    - stage: test
+    - stage: build php docker
       script:
-        - make b-lang-docker CURRENT_LANG=php && docker run --rm huanghongjiang/php:latest
+        - echo "$DockerHubAccount" | docker login -u "$DockerHubPassword" --password-stdin
+        - make b-lang-docker CURRENT_LANG=php
+        - docker push huanghongjiang/php:latest
+    - stage:
+      script:
+        - docker run --rm huanghongjiang/php:latest

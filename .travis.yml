@@ -3,8 +3,7 @@ dist: trusty
 
 jobs:
   include:
-    - stage: build docker
+    - stage: test
       script:
         - make b-lang-docker CURRENT_LANG=php
-    - stage: test
-      script: docker run --rm hongjianghuang/php:latest cat composer.json
+        - docker run --rm hongjianghuang/php:latest

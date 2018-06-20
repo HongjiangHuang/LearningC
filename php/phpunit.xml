@@ -1,0 +1,10 @@
+<phpunit
+        bootstrap="vendor/autoload.php"
+        timeoutForSmallTests="900"
+        verbose="true">
+    <testsuites>
+        <testsuite name="LeetCode/php">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

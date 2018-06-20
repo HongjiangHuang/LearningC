@@ -6,7 +6,19 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && mv ./composer.phar /usr/local/bin/composer
 
-RUN apt-get update && apt-get install git --assume-yes
+RUN apt-get update
+
+RUN apt-get install git --assume-yes \
+    && apt-get install zlib1g-dev --assume-yes \
+    && docker-php-source extract \
+    && cd /usr/src/php/ext/zip \
+    && phpize \
+    && ./configure --with-php-config=/usr/local/bin/php-config \
+    && make \
+    && make install \
+    && touch /usr/local/etc/php/conf.d/php-ext-zip.ini \
+    && echo extension=zip.so >> /usr/local/etc/php/conf.d/php-ext-zip.ini \
+    && docker-php-source delete
 
 COPY ./ /opt/php
 

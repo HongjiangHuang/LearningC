@@ -11,3 +11,25 @@ jobs:
     - stage: run php test
       script:
         - docker run --rm hongjianghuang/php:latest
+
+jobs:
+  include:
+    - stage: build go docker
+      script:
+        - echo "$DockerHubPassword" | docker login -u "$DockerHubAccount" --password-stdin
+        - make b-lang-docker CURRENT_LANG=go
+        - docker push hongjianghuang/go:latest
+    - stage: run go test
+      script:
+        - docker run --rm hongjianghuang/go:latest
+
+jobs:
+  include:
+    - stage: build node docker
+      script:
+        - echo "$DockerHubPassword" | docker login -u "$DockerHubAccount" --password-stdin
+        - make b-lang-docker CURRENT_LANG=node
+        - docker push hongjianghuang/node:latest
+    - stage: run go test
+      script:
+        - docker run --rm hongjianghuang/node:latest

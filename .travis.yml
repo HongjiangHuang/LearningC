@@ -1,33 +1,28 @@
 sudo: true
 dist: trusty
 
+stages:
+  - php-test
+  - go-test
+  - node-test
+
 jobs:
   include:
-    - stage: build php docker
+    - stage: php-test
       script:
         - echo "$DockerHubPassword" | docker login -u "$DockerHubAccount" --password-stdin
         - make b-lang-docker CURRENT_LANG=php
         - docker push hongjianghuang/php:latest
-    - stage: run php test
-      script:
         - docker run --rm hongjianghuang/php:latest
-
-  include:
-    - stage: build go docker
+    - stage: go-test
       script:
         - echo "$DockerHubPassword" | docker login -u "$DockerHubAccount" --password-stdin
         - make b-lang-docker CURRENT_LANG=go
         - docker push hongjianghuang/go:latest
-    - stage: run go test
-      script:
         - docker run --rm hongjianghuang/go:latest
-
-  include:
-    - stage: build node docker
+    - stage: node-test
       script:
         - echo "$DockerHubPassword" | docker login -u "$DockerHubAccount" --password-stdin
         - make b-lang-docker CURRENT_LANG=node
         - docker push hongjianghuang/node:latest
-    - stage: run node test
-      script:
         - docker run --rm hongjianghuang/node:latest

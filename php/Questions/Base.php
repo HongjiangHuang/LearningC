@@ -1,8 +1,9 @@
 <?php
-
 namespace Questions;
 
-abstract class Base
+class Base
 {
-    abstract function main();
+    public function main() {
+
+    }
 }

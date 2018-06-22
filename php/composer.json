@@ -1,15 +1,21 @@
 {
-  "name": "hongjianghuang/LeetCode",
-  "require": {
-    "php": ">=7.1"
-  },
-  "require-dev": {
-    "fzaninotto/faker": "^1.7",
-    "phpunit/phpunit": ">=4.8 < 6.0"
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true,
-  "scripts": {
-    "test": "./vendor/bin/phpunit"
-  }
+    "name": "hongjianghuang/LeetCode",
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.7",
+        "phpunit/phpunit": ">=4.8 < 6.0"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Questions\\": "Questions/",
+            "Tests\\": "Tests/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    }
 }
